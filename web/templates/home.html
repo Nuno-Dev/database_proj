@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BD Project</title>
+  </head>
+  <body style="padding: 20px">
+    {% if cursor %}
+    <p>Welcome to our app!</p>
+    <button
+      onclick="location.href = window.location.href + 'category';"
+      style="margin-bottom: 10px"
+    >
+      a) Add and Delete Categories
+    </button>
+    <hr />
+    <button
+      onclick="location.href = window.location.href + 'retailer';"
+      style="margin-top: 10px; margin-bottom: 10px"
+    >
+      b) Add and Delete Retailers
+    </button>
+    <hr />
+    <p>c) List Replenish Events:</p>
+    <form action="ivm" method="post">
+      <p>IVM: <input type="number" name="ivm_serial" required /></p>
+      <p><input type="submit" value="Submit" /></p>
+    </form>
+    <hr />
+
+    <p>d) List Sub-Categories of a Super Category:</p>
+    <form action="subcategory" method="post">
+      <p>
+        Super Category Name:
+        <input type="text" name="supercategory_name" required />
+      </p>
+      <p><input type="submit" value="Submit" /></p>
+    </form>
+    {% else %}
+    <p>Erro: ao obter dados da base de dados!</p>
+    {% endif %}
+  </body>
+</html>

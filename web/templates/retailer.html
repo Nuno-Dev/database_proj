@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Edit Retailer</title>
+  </head>
+  <body style="padding: 20px">
+    {% if cursor %}
+    <button
+      onclick="location.href = window.location.href.split('/').slice(0,-1).join('/')+'/';;"
+      style="margin-bottom: 10px"
+    >
+      Go back
+    </button>
+    <table border="2px">
+      <thead>
+        <tr>
+          <th>Retailer TIN</th>
+          <th>Retailer Name</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in cursor %}
+        <tr>
+          <td style="text-align: center">{{ record[0] }}</td>
+          <td style="text-align: center">{{ record[1] }}</td>
+          <td style="text-align: center">
+            <form action="delete-retailer" method="post">
+              <p style="margin: 0; padding: 0">
+                <input
+                  type="hidden"
+                  name="retailer_tin"
+                  value="{{ record[0] }}"
+                />
+              </p>
+              <p style="margin: 0; padding: 0">
+                <input
+                  type="submit"
+                  value="Delete Retailer"
+                  style="margin: 5px"
+                />
+              </p>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>Erro: não foi possível obter dados da base de dados!</p>
+    {% endif %}
+
+    <h3>Add Retailer:</h3>
+    <form action="add-retailer" method="post">
+      <p><b>TIN:</b><input type="text" name="add_retailer_tin" required /></p>
+      <p><b>Name:</b><input type="text" name="add_retailer_name" required /></p>
+      <p><input type="submit" value="Submit" /></p>
+    </form>
+  </body>
+</html>

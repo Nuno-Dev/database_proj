@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Delete Retailer</title>
+  </head>
+  <body style="padding: 20px">
+    {% if cursor %}
+    <p style="color: green">
+      Retailer
+      <b style="font-size: 15px">{{ params }}</b>
+      successfully deleted.
+    </p>
+    <button
+      onclick="location.href = document.referrer;"
+      style="margin-top: 10px"
+    >
+      Go back
+    </button>
+    {% else %}
+    <p>Erro: ao obter dados da base de dados!</p>
+    {% endif %}
+  </body>
+</html>

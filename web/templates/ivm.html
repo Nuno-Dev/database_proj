@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IVM</title>
+  </head>
+  <body style="padding: 20px">
+    {% if cursor %}
+    <button
+      onclick="location.href = window.location.href.split('/').slice(0,-1).join('/')+'/';;"
+      style="margin-bottom: 10px"
+    >
+      Go back
+    </button>
+    <table border="2px">
+      <thead>
+        <tr>
+          <th>Category Name</th>
+          <th>Total Units Replenished</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in cursor %}
+        <tr>
+          <td style="text-align: center">{{ record[0] }}</td>
+          <td style="text-align: center">{{ record[1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>Erro: não foi possível obter dados da base de dados!</p>
+    {% endif %}
+  </body>
+</html>

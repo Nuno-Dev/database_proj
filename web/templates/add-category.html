@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Category</title>
+  </head>
+  <body style="padding: 20px">
+    {% if cursor %}
+    <p style="color: green">
+      Category
+      <b style="font-size: 15px">{{ params }}</b>
+      successfully added.
+    </p>
+    <button
+      onclick="location.href = document.referrer;"
+      style="margin-top: 10px"
+    >
+      Go back
+    </button>
+    {% else %}
+    <p>Erro: ao obter dados da base de dados!</p>
+    {% endif %}
+  </body>
+</html>
